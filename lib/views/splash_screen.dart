@@ -17,7 +17,7 @@ class _SplashState extends State<Splash> {
     super.initState();
     Timer(
         Duration(seconds: 3),
-            () => Navigator.pushReplacement(
+        () => Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => Home())));
   }
 
@@ -25,28 +25,36 @@ class _SplashState extends State<Splash> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-                padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      colors.greenClr,
-                      Colors.black
-                    ]
-                  ),
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(50)
-                  )
-                ),
-                child: Text("I4S",style: TextStyle(color: Colors.white,fontSize: 40,fontWeight: FontWeight.bold,fontFamily: 'avenir'),)),
-            Text("Intelligent Student Study Support Suite",textAlign:TextAlign.center,style: TextStyle(color: colors.greenClr,fontSize: 30,fontWeight: FontWeight.bold,fontFamily: 'avenir'),),
-          ],
-        )
-      ),
+          child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                  /* gradient:
+                      LinearGradient(List: [colors.greenClr, Colors.black]), */
+                  borderRadius:
+                      BorderRadius.only(bottomLeft: Radius.circular(50))),
+              child: Text(
+                "I4S",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'avenir'),
+              )),
+          Text(
+            "Intelligent Student Study Support Suite",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: colors.greenClr,
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'avenir'),
+          ),
+        ],
+      )),
     );
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:notification_alarm_example/views/home_page.dart';
 import 'package:notification_alarm_example/views/splash_screen.dart';
 
 void main() async {
@@ -11,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(),
       home: Splash(),
@@ -56,6 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
         hashcode, message, subtext, datetime, platformChannel,
         payload: hashcode.toString());
   }
+
   String task = "Sleep task";
   @override
   Widget build(BuildContext context) {

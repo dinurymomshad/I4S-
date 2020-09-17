@@ -38,25 +38,13 @@ class _HomeState extends State<Home> {
   List<Image> imagess = [
     Image.asset("assets/slide1.JPG"),
     Image.asset("assets/slide2.JPG"),
-    Image.asset("assets/slide3.JPG"), //yeee
+    Image.asset("assets/slide3.JPG"),
     Image.asset("assets/slide4.JPG"),
     Image.asset("assets/slide5.JPG"),
     Image.asset("assets/slide6.JPG"),
     Image.asset("assets/slide7.JPG"),
-    Image.asset("assets/slider7.jpeg"), //yeeeee
+    Image.asset("assets/slider7.jpeg"),
   ];
-  //@override
-  // Widget imageCoursel = Container(
-  //   height: 120,
-  //   child: Carousel(
-  //     dotBgColor: Colors.transparent,
-  //     dotColor: Colors.transparent,
-  //     showIndicator: false,
-  //     boxFit: BoxFit.fill,
-  //     radius: Radius.circular(20),
-  //     images: imagess
-  //   ),
-  // );
 
   final List<ChatListItem> chatListItem = [
     ChatListItem(
@@ -89,8 +77,10 @@ class _HomeState extends State<Home> {
               ),
               ListTile(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => AlarmHomeScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AlarmHomeScreen()));
                 },
                 leading: Icon(
                   Icons.alarm,
@@ -259,111 +249,121 @@ class _HomeState extends State<Home> {
           style: TextStyle(fontFamily: 'avenie'),
         ),
       ),
-      body: Column(
-        children: <Widget>[
-          SizedBox(height: 10,),
-          InkWell(
-            onTap: () {
-              if (_current == 2) {
-                print(_current);
-                _launch3URL();
-              } else if (_current == 7) {
-                print(_current);
-                _launch8URL();
-              }
-            },
-            child: CarouselSlider(
-              options: CarouselOptions(
-                onPageChanged: (index, reason) {
-                  setState(() {
-                    _current = index;
-                  });
-                },
-                height: 200,
-                aspectRatio: 16 / 12,
-                viewportFraction: 0.9,
-                initialPage: 0,
-                enableInfiniteScroll: true,
-                reverse: false,
-                autoPlay: true,
-                autoPlayInterval: Duration(seconds: 3),
-                autoPlayAnimationDuration: Duration(milliseconds: 800),
-                autoPlayCurve: Curves.fastOutSlowIn,
-                enlargeCenterPage: true,
-                carouselController: _controller,
-                scrollDirection: Axis.horizontal,
-              ),
-              items: imagess,
+      body: Container(
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 10,
             ),
-          ),
-          Row(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Favourites",
-                  style: TextStyle(fontSize: 18, fontFamily: 'avenie'),
+            InkWell(
+              onTap: () {
+                if (_current == 2) {
+                  print(_current);
+                  _launch3URL();
+                } else if (_current == 7) {
+                  print(_current);
+                  _launch8URL();
+                }
+              },
+              child: CarouselSlider(
+                options: CarouselOptions(
+                  onPageChanged: (index, reason) {
+                    setState(() {
+                      _current = index;
+                    });
+                  },
+                  height: 200,
+                  aspectRatio: 16 / 12,
+                  viewportFraction: 0.9,
+                  initialPage: 0,
+                  enableInfiniteScroll: true,
+                  reverse: false,
+                  autoPlay: true,
+                  autoPlayInterval: Duration(seconds: 3),
+                  autoPlayAnimationDuration: Duration(milliseconds: 800),
+                  autoPlayCurve: Curves.fastOutSlowIn,
+                  enlargeCenterPage: true,
+                  carouselController: _controller,
+                  scrollDirection: Axis.horizontal,
                 ),
+                items: imagess,
               ),
-            ],
-          ),
-          Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                  height: MediaQuery.of(context).size.height / 2.5,
-                  width: MediaQuery.of(context).size.width,
-                  child: Flexible(
-                    child: ListView.separated(
-                        shrinkWrap: true,
-                        itemCount: chatListItem.length,
-                        separatorBuilder: (ctx, i) {
-                          return Divider(
-                            indent: 20.0,
-                            endIndent: 20.0,
-                          );
-                        },
-                        itemBuilder: (ctx, i) {
-                          return Padding(
-                            padding:
-                            const EdgeInsets.only(right: 8.0, left: 8.0),
-                            child: InkWell(
-                              onTap: () {
-                                if (i == 0) {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => AlarmHomeScreen()));
-                                } else if (i == 1) {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Torch()));
-                                } else if (i == 2) {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => CutDownTim()));
-                                } else if (i == 3) {
-                                  // Navigator.push(context, MaterialPageRoute(
-                                  //   builder: (context) => AlramPage()
-                                  // ));
-                                }
+            ),
+            Row(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "Favourites",
+                    style: TextStyle(fontSize: 18, fontFamily: 'avenie'),
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                    height: MediaQuery.of(context).size.height / 2.5,
+                    width: MediaQuery.of(context).size.width,
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: ListView.separated(
+                              shrinkWrap: true,
+                              itemCount: chatListItem.length,
+                              separatorBuilder: (ctx, i) {
+                                return Divider(
+                                  indent: 20.0,
+                                  endIndent: 20.0,
+                                );
                               },
-                              child: Card(
-                                elevation: 3.0,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(12.0),
-                                  child: Text(
-                                    chatListItem[i].title,
-                                    style: TextStyle(fontSize: 20),
+                              itemBuilder: (ctx, i) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(
+                                      right: 8.0, left: 8.0),
+                                  child: InkWell(
+                                    onTap: () {
+                                      if (i == 0) {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    AlarmHomeScreen()));
+                                      } else if (i == 1) {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => Torch()));
+                                      } else if (i == 2) {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    CutDownTim()));
+                                      } else if (i == 3) {
+                                        // Navigator.push(context, MaterialPageRoute(
+                                        //   builder: (context) => AlramPage()
+                                        // ));
+                                      }
+                                    },
+                                    child: Card(
+                                      elevation: 3.0,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(12.0),
+                                        child: Text(
+                                          chatListItem[i].title,
+                                          style: TextStyle(fontSize: 20),
+                                        ),
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                            ),
-                          );
-                        }),
-                  )))
-        ],
+                                );
+                              }),
+                        ),
+                      ],
+                    )))
+          ],
+        ),
       ),
     );
   }
